@@ -14,13 +14,18 @@ sum(~y=10, ~x=2)
 
 // Optional Labeled Arguments
 
+type rec option<'a> =
+  | None
+  | Option('a)
 
+type rec sumType<'a> = (int, option<'a>) => unit
 
-let sumOptional = (~x, ~y=?, ()) : int => {
+let sumOptional: sumType<int> = (x, y) => {
   switch y {
-  | None => x
-  | Some(y_) => x + y_
+    | None => Js.log(x)
+    | Option(y) =>  Js.log(x + y)
   }
 }
-sumOptional(~x=3)
-sumOptional(~y=2, ~x=5)
+
+sumOptional(3, None)
+sumOptional(5, Option(10))
