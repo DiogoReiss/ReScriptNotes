@@ -1,4 +1,4 @@
-// Basicly we have two types of for lops
+// Basicly we have two types of for loops
 // first one
 for x in 1 to 3 {
   Js.log(x) // 1 2 3
